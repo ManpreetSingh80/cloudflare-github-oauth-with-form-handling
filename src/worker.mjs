@@ -44,7 +44,9 @@ async function handleRequest(request, env) {
     const origin = request.headers.get('origin');
     const { pathname, searchParams } = new URL(request.url);
 
-    if (request.method === "OPTIONS") {
+    if (pathname === '/') {
+      return Response.redirect('https://gatsby-material-portfolio-starter.pages.dev/contact', 302);
+    } else if (request.method === "OPTIONS") {
         return new Response(null, {
           headers: CORS_HEADERS,
         });
