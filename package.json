@@ -1,0 +1,15 @@
+{
+  "name": "cloudflare-github-oauth-with-form-handling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Cloudflare Worker for github oauth authentication",
+  "module": "./src/worker.mjs",
+  "author": "manpreetsingh80",
+  "license": "ISC",
+  "repository": "github:manpreetsingh80/cloudflare-github-oauth-with-form-handling",
+  "release": {
+    "branches": [
+      "master"
+    ]
+  }
+}

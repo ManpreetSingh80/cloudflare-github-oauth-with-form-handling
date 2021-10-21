@@ -1,0 +1,37 @@
+name = "oauth"
+type = "javascript"
+
+# Replace with your own account_id
+account_id = ""
+
+workers_dev = true
+route = ""
+zone_id = ""
+
+compatibility_date = "2021-10-20"
+
+[build]
+
+[build.upload]
+format = "modules"
+dir = "src"
+main = "./worker.mjs"
+
+[vars]
+# Allowed websites for oauth authentication
+originPattern = ""
+
+[[kv_namespaces]]
+binding = "CONTACT"
+# Replace with your KV id
+id = ""
+
+[durable_objects]
+bindings = [
+# un-comment below line to use rate-limiting
+#  { name = "limiters", class_name = "RateLimiter" }
+]
+
+# [secrets]
+# client_id
+# client_secret
