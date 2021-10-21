@@ -31,6 +31,13 @@ function generateId (len) {
     return Array.from(arr, dec2hex).join('');
 }
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+  'Access-Control-Max-Age': '86400',
+  "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Origin",
+};
+
 async function handleRequest(request, env) {
     // Get the client's IP address for use with the rate limiter.
     const ip = request.headers.get("CF-Connecting-IP");
@@ -39,11 +46,7 @@ async function handleRequest(request, env) {
 
     if (request.method === "OPTIONS") {
         return new Response(null, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
-          },
+          headers: CORS_HEADERS,
         });
     } else if (pathname.startsWith("/auth") && request.method === "GET") {
         return Response.redirect(
@@ -144,7 +147,7 @@ async function handleRequest(request, env) {
 
         // storing in KV with auto expiry of 2 days
         await env.CONTACT.put(id, JSON.stringify(value), {expirationTtl: 2*24*60*60});
-        return new Response(id, {status: 200});
+        return new Response(id, {status: 200, headers: CORS_HEADERS});
       } catch (err) {
         return new Response(err.stack, {status: 500});
       }
