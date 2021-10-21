@@ -9,6 +9,10 @@ This is an External Oauth client for [netlify-cms](https://www.netlifycms.org/do
 
 GitHub requires a server for authentication and Netlify provides this server only for sites deployed to it.
 
+## DEMO
+
+You can demo the contact form [here](https://gatsby-material-portfolio-starter.pages.dev/contact/)
+The project [gatsby-material-portfolio-starter](https://github.com/ManpreetSingh80/gatsby-material-portfolio-starter) is hosted on Cloudflare pages.
 
 ### Installation
 
